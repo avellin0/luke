@@ -1,5 +1,5 @@
-export const VOWELS: string[] = ["A", "E", "I", "O", "U"];
+export const VOWELS: string[] = ["Á", "É", "Í", "Ó", "Ú"];
 
 export function buildSyllable(consonant: string, vowel: string): string {
-  return `${consonant}${vowel.toLowerCase()}`;
+  return `${consonant}${vowel.toLowerCase().normalize()}`;
 }
