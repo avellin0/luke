@@ -1,0 +1,215 @@
+:root {
+  --color-bg: #fff8ec;
+  --color-surface: #ffffff;
+  --color-text: #332c24;
+  --color-text-soft: #8b8178;
+
+  --color-teal: #2f9e97;
+  --color-teal-dark: #257f79;
+  --color-blue: #4f8fe0;
+  --color-yellow: #ffc24b;
+  --color-coral: #ff8a65;
+  --color-green: #68c48a;
+
+  --color-primary: var(--color-teal);
+  --color-primary-dark: var(--color-teal-dark);
+  --color-primary-soft: #e3f4f2;
+
+  --color-border: #f0e4d2;
+  --color-success: var(--color-green);
+  --color-retry: var(--color-coral);
+
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 32px;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 2px 6px rgba(51, 44, 36, 0.08);
+  --shadow-md: 0 10px 28px rgba(51, 44, 36, 0.12);
+
+  --space-1: 6px;
+  --space-2: 12px;
+  --space-3: 18px;
+  --space-4: 28px;
+  --space-5: 40px;
+
+  --font-display: "Baloo 2", "Nunito", system-ui, sans-serif;
+  --font-body: "Nunito", system-ui, sans-serif;
+
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: contain;
+}
+
+#app {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--color-blue);
+  outline-offset: 3px;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-3) var(--space-3) var(--space-5);
+  max-width: 560px;
+  width: 100%;
+  margin-inline: auto;
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.top-bar__title {
+  font-size: 1.2rem;
+  color: var(--color-text);
+}
+
+.icon-button {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.icon-button:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.icon-button:active {
+  transform: scale(0.94);
+}
+
+.big-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  min-height: 64px;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.3rem;
+  box-shadow: var(--shadow-md);
+  transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+.big-button:active {
+  transform: scale(0.97);
+}
+
+.big-button--primary {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.big-button--primary:hover {
+  background: var(--color-primary-dark);
+}
+
+.big-button--secondary {
+  background: var(--color-coral);
+  color: #fff;
+}
+
+.big-button--secondary:hover {
+  filter: brightness(0.96);
+}
+
+.pill-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 12px 20px;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  font-weight: 700;
+  font-size: 1rem;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.pill-button:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.pill-button:active {
+  transform: scale(0.96);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

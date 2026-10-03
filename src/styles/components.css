@@ -1,0 +1,309 @@
+/* Progress indicator -------------------------------------------------- */
+
+.progress-indicator {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex: 1;
+}
+
+.progress-indicator__track {
+  flex: 1;
+  height: 12px;
+  background: var(--color-border);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+
+.progress-indicator__fill {
+  height: 100%;
+  background: var(--color-yellow);
+  border-radius: var(--radius-pill);
+  transition: width 400ms ease;
+}
+
+.progress-indicator__label {
+  font-weight: 700;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+/* Letter card ----------------------------------------------------------- */
+
+.letter-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-2);
+}
+
+.letter-card {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+.letter-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.letter-card:active {
+  transform: scale(0.95);
+}
+
+.letter-card__glyph {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 6vw, 2rem);
+  font-weight: 700;
+  color: var(--color-primary-dark);
+}
+
+.letter-card--practiced {
+  background: var(--color-primary-soft);
+}
+
+.letter-card--soon {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.letter-card__badge {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  font-size: 0.85rem;
+}
+
+/* Audio button ------------------------------------------------------------ */
+
+.audio-button {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #fff;
+  padding: 18px;
+  box-shadow: var(--shadow-md);
+  transition: transform 160ms ease;
+  flex-shrink: 0;
+}
+
+.audio-button--lg {
+  width: 84px;
+  height: 84px;
+  padding: 22px;
+}
+
+.audio-button:hover {
+  filter: brightness(1.05);
+}
+
+.audio-button:active {
+  transform: scale(0.93);
+}
+
+.audio-button--pulse {
+  animation: audio-pulse 380ms ease;
+}
+
+@keyframes audio-pulse {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.12);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Microphone button --------------------------------------------------- */
+
+.mic-button {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-inline: auto;
+  background: var(--color-primary);
+  box-shadow: var(--shadow-md);
+  transition: background-color 200ms ease, transform 160ms ease;
+}
+
+.mic-button:active {
+  transform: scale(0.95);
+}
+
+.mic-button__icon {
+  font-size: 2.6rem;
+  z-index: 1;
+}
+
+.mic-button__waves {
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.mic-button__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 3px solid var(--color-primary);
+  opacity: 0;
+}
+
+.mic-button--listening {
+  background: var(--color-blue);
+}
+
+.mic-button--listening .mic-button__waves {
+  display: flex;
+}
+
+.mic-button--listening .mic-button__ring {
+  border-color: var(--color-blue);
+  animation: mic-ripple 1.6s ease-out infinite;
+}
+
+.mic-button--listening .mic-button__ring:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.mic-button--listening .mic-button__ring:nth-child(3) {
+  animation-delay: 0.8s;
+}
+
+@keyframes mic-ripple {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+.mic-button--processing {
+  background: var(--color-yellow);
+}
+
+.mic-button--processing .mic-button__icon {
+  animation: mic-spin 1s linear infinite;
+}
+
+@keyframes mic-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.mic-button--success {
+  background: var(--color-success);
+  animation: mic-bounce 480ms ease;
+}
+
+@keyframes mic-bounce {
+  0% {
+    transform: scale(1);
+  }
+  35% {
+    transform: scale(1.15);
+  }
+  70% {
+    transform: scale(0.96);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.mic-button--retry {
+  background: var(--color-retry);
+}
+
+.mic-button--unsupported {
+  background: var(--color-text-soft);
+}
+
+/* Image choice ---------------------------------------------------------- */
+
+.image-choice {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.image-choice__option {
+  aspect-ratio: 1;
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+.image-choice__option:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.image-choice__option:active {
+  transform: scale(0.95);
+}
+
+.image-choice__emoji {
+  font-size: clamp(2.2rem, 10vw, 3.2rem);
+}
+
+.image-choice__option--correct {
+  background: var(--color-primary-soft);
+  animation: mic-bounce 480ms ease;
+}
+
+.image-choice__option--wrong {
+  animation: option-shake 380ms ease;
+}
+
+@keyframes option-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-6px);
+  }
+  75% {
+    transform: translateX(6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mic-button--listening .mic-button__ring,
+  .mic-button--processing .mic-button__icon,
+  .mic-button--success,
+  .image-choice__option--correct,
+  .image-choice__option--wrong,
+  .audio-button--pulse {
+    animation: none !important;
+  }
+}
